@@ -17,7 +17,8 @@
     <!--Orelega One-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet"></head>
+    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+</head>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -59,70 +60,35 @@
             <h2 class="border-1 border-bottom border-dark">The Code</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
-                    <pre class="line-numbers"><code class="language-javascript">
-                        //get the values from the UI
-//starts our controller function
-function getValues() {
-    //get values from page
-    let startValue = document.getElementById("startValue").value;
-    let endValue = document.getElementById("endValue").value;
-
-    //parse into Integers
-    startValue = parseInt(startValue);
-    endValue = parseInt(endValue);
-
-    if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
-
-        //call generate numbers
-        numbers = generateNumbers(startValue, endValue);
-
-        //call display numbers
-        displayNumbers(numbers);
-
-    } else {
-        alert("You must enter integers");
-    }
+                    <pre class="line-numbers">
+                        <code class="language-javascript">
+                            //Get the string from the page
+//Controller function
+function getValue() {
+    document.getElementById("alert").classList.add("invisible");
+    let userString = document.getElementById("userString").value;
+    let revString = reverseString(userString);
+    displayString(revString);
 }
 
-//generate numbers from the start value to the end value
-//logic function(s)
-function generateNumbers(sValue, eValue) {
-
-    let numbers = [];
-
-    //we want to get all numbers from start to end
-    for (let index = sValue; index <= eValue; index++) {
-
-        //this will execute in a loop until index = eValue
-        numbers.push(index);
+//Reverse the string
+//Logic function
+function reverseString(userString) {
+    let revString = [];
+    //Reverse the string using a for loop
+    for (let index = userString.length - 1; index >= 0; index--) {
+        revString += userString[index];
     }
-
-    return numbers;
-
+    return revString;
 }
 
-//display numbers and mark even numbers bold
-//display or view functions
-function displayNumbers(numbers) {
-
-    let templateRows = "";
-
-    for (let index = 0; index < numbers.length; index++) {
-
-        let className = "even";
-        let number = numbers[index];
-
-        if (number % 2 == 0) {
-            className = "even";
-        } else {
-            className = "odd";
-        }
-        //This does render correctly with Prism see the source
-        templateRows += `<tr><td class="${className}">${number}</td></tr>`;
-    }
-
-    document.getElementById("results").innerHTML = templateRows;
-
+//Display the reversed string to the user
+//View function
+function displayString(revString) {
+    //Write msg to page
+    document.getElementById("msg").innerHTML = `Your String Reversed is: ${revString}`;
+    //Turn on alert box
+    document.getElementById("alert").classList.remove("invisible");
 }
                         </code>
                     </pre>
@@ -130,16 +96,20 @@ function displayNumbers(numbers) {
                 <div class="col-lg-4">
                     <p>The Code is structured in three function.</p>
                     <div>
-                        <h5>function getValues()</h5>
-                    <p>This function retrieves the input values from the UI using custom ID tags. It then varifies that they are numbers and not strings. Once confirmed, the numbers are then passed to the next function. If a string has been enetred, it will produce an error message to the user.</p>
+                        <h5>function getValue()</h5>
+                        <p>This function retrieves the input string from the UI using custom ID tags. It then creates an
+                            addidtional variable revString and displays it.
+                        </p>
                     </div>
                     <div>
-                        <h5>function generateNumbers()</h5>
-                    <p>This function runs a loop and places the numbers in an array. The array is then used in the following function.</p>
+                        <h5>function reverseString()</h5>
+                        <p>This function runs a loop backwards using the length of the string as a starting point. The
+                            characters are then placed into an array in reverse order.</p>
                     </div>
                     <div>
-                        <h5>function displayNumbers()</h5>
-                    <p>This function inputs the array into a table which is printed on the HTML page. The function also bolds all of the even numbers.</p>
+                        <h5>function displayString()</h5>
+                        <p>This function prints the array on the HTML page. The BS5 class invisible is removed to
+                            display the results box.</p>
                     </div>
                 </div>
             </div>
@@ -162,13 +132,16 @@ function displayNumbers(numbers) {
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
                         <div class="col social">
-                            <a href="https://www.linkedin.com/in/riley-macneill-8080b196/" target="_blank"><i class="fab fa-linkedin fab-2x"></i></a>
+                            <a href="https://www.linkedin.com/in/riley-macneill-8080b196/" target="_blank"><i
+                                    class="fab fa-linkedin fab-2x"></i></a>
                         </div>
                         <div class="col social">
-                            <a href="https://github.com/rileymacneill" target="_blank"><i class="fab fa-github fab-2x"></i></a>
+                            <a href="https://github.com/rileymacneill" target="_blank"><i
+                                    class="fab fa-github fab-2x"></i></a>
                         </div>
                         <div class="col social">
-                            <a href="https://twitter.com/riley_macneill" target="_blank"><i class="fab fa-twitter fab-2x"></i></a>
+                            <a href="https://twitter.com/riley_macneill" target="_blank"><i
+                                    class="fab fa-twitter fab-2x"></i></a>
                         </div>
                     </div>
                 </div>
